@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
 
+  alreadyLoggedIn = false;
+
+
   constructor(
     private auth: AuthService,
     private token: TokenService,
@@ -29,7 +32,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl('password', [Validators.required])
     });
     if (this.token.getAccessToken()) {
-      this.router.navigate(['/']);
+      this.alreadyLoggedIn = true;
     }
   }
 

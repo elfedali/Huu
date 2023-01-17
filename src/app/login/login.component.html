@@ -2,6 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-4 col-lg-5">
+                <!-- home link -->
+                <div class="d-flex justify-content-end py-3 fw-bold">
+                    <a routerLink="/" class="text-decoration-none" style="font-size: 1.5rem;">
+                        <!-- bootstrap svg close-->
+                        <i class="bi bi-x-circle"></i>
+                    </a>
+                </div>
                 <div class="p-4">
                     <form [formGroup]="form" (ngSubmit)="onSubmit()">
                         <div class="mb-3">
@@ -9,6 +16,12 @@
                             <p>
                                 <small class="text-muted">Please login to continue</small>
                             </p>
+                            <!-- alreadyLoggedIn -->
+                            <div *ngIf="alreadyLoggedIn">
+                                <div class="alert alert-danger" role="alert">
+                                    You are already logged in.
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3">

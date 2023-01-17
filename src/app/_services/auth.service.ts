@@ -21,8 +21,11 @@ export class AuthService {
     return this.http.post<any>(API_URL + 'login', { email, password }, httpOptions);
   }
 
-  register(username: string, email: string, password: string) {
-    return this.http.post<any>(API_URL + 'register', { username, email, password }, httpOptions);
+  register(name: string, email: string, password: string) {
+
+    let password_confirmation: string = password
+
+    return this.http.post<any>(API_URL + 'register', { name, email, password, password_confirmation }, httpOptions);
   }
 
   logout() {

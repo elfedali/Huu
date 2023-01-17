@@ -1,1 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+$red: #ee667e;
+$yellow: #f3c552;
+
+:root {
+  --light-green: #b5d5c5;
+  --light-purple: #c5b5d5;
+  --light-red: #d5b5b5;
+  --llight-yellow: #f3c552;
+}
+
+$font-family-sans-serif: "IBM Plex Mono", monospace;
+
+// input
+$input-focus-box-shadow: none;
+
 @import "bootstrap/scss/bootstrap";

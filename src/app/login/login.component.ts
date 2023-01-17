@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { TokenService } from '../_services/token.service';
 
@@ -15,9 +16,12 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
 
+  constructor(
+    private auth: AuthService,
+    private token: TokenService,
+    private router: Router,
 
-
-  constructor(private auth: AuthService, private token: TokenService) { }
+  ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -25,7 +29,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl('password', [Validators.required])
     });
     if (this.token.getAccessToken()) {
-      console.log('user is logged in');
+      this.router.navigate(['/']);
     }
   }
 
@@ -42,6 +46,7 @@ export class LoginComponent implements OnInit {
           console.log(data);
           this.token.setAccessToken(data.access_token);
           this.loading = false;
+          this.router.navigate(['/']);
         },
         error => {
           console.log(error);

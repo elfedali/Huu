@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
+import { TokenService } from '../_services/token.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
   loading = false;
   submitted = false;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private token: TokenService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -35,6 +38,8 @@ export class RegisterComponent implements OnInit {
         data => {
           console.log(data);
           this.loading = false;
+          this.token.signOut(); //
+          this.router.navigate(['/login']);
         },
         error => {
           console.log(error);

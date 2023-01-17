@@ -17,7 +17,11 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
+                            <div class="d-lg-flex justify-content-between">
+                                <label for="password" class="form-label">Password</label>
+                                <a routerLink="/forgot-password">Forgot password?</a>
+                            </div>
+
                             <input type="password" formControlName="password" placeholder="Password"
                                 class="form-control">
                         </div>
@@ -27,14 +31,17 @@
                         </div>
 
                         <div class="mb-3">
+                            Don't have an account?
                             <a routerLink="/register">Register</a>
                         </div>
+
                     </form>
                 </div>
                 <!-- /.p-3 -->
             </div>
             <!-- empty div -->
-            <div class="col-xl-8 col-lg-7 vh-100 d-lg-block d-none bg-light"></div>
+            <div class="col-xl-8 col-lg-7 vh-100 d-lg-block d-none " style="background-color: lightcyan;">
+            </div>
         </div>
     </div>
     <!-- /.container-flluid -->

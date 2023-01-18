@@ -1,3 +1,4 @@
+import { UserService } from './../_services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,14 +16,17 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   loading = false;
   submitted = false;
+  user: any = {};
 
   alreadyLoggedIn = false;
 
+  public backgroundImage = 'https://images.pexels.com/photos/4081003/pexels-photo-4081003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
 
   constructor(
     private auth: AuthService,
     private token: TokenService,
     private router: Router,
+    private userService: UserService
 
   ) { }
 
@@ -33,6 +37,8 @@ export class LoginComponent implements OnInit {
     });
     if (this.token.getAccessToken()) {
       this.alreadyLoggedIn = true;
+      this.user = this.userService.getLoggedInUser();
+
     }
   }
 
@@ -47,7 +53,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.token.setAccessToken(data.access_token);
+          this.token.setAccessToken(data.access_token); // save token in local storage
+          this.userService.setLoggedInUser(data.user); // save user in local storage
           this.loading = false;
           this.router.navigate(['/']);
         },

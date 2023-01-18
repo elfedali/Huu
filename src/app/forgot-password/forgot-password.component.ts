@@ -11,6 +11,8 @@ export class ForgotPasswordComponent implements OnInit {
   loading = false;
   submitted = false;
 
+  public backgroundImage = 'https://images.pexels.com/photos/9380543/pexels-photo-9380543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
+
   constructor() { }
 
   ngOnInit(): void {
